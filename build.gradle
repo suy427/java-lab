@@ -7,10 +7,23 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
+
+wrapper {
+    gradleVersion = '5.6.3'
+}
+
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
+
+    // servlet
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
+
+
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
