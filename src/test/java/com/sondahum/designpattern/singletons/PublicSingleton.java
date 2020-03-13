@@ -1,4 +1,4 @@
-package com.sondahum.singletons;
+package com.sondahum.designpattern.singletons;
 
 public class PublicSingleton implements SingletonInterface {
     public static final PublicSingleton _instance = new PublicSingleton();

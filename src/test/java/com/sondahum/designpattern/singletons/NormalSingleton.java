@@ -1,4 +1,4 @@
-package com.sondahum.singletons;
+package com.sondahum.designpattern.singletons;
 
 public class NormalSingleton implements SingletonInterface {
     private static NormalSingleton _instance;

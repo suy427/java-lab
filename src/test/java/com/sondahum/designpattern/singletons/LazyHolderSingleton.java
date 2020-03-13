@@ -1,4 +1,4 @@
-package com.sondahum.singletons;
+package com.sondahum.designpattern.singletons;
 
 public class LazyHolderSingleton implements SingletonInterface {
     private LazyHolderSingleton() {}

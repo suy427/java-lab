@@ -1,4 +1,4 @@
-package com.sondahum.singletons;
+package com.sondahum.designpattern.singletons;
 
 public enum EnumSingleton implements SingletonInterface {
     _instance;
