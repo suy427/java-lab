@@ -1,6 +1,6 @@
-import com.sondahum.config.MyConfig1;
-import com.sondahum.config.MyConfig2;
-import com.sondahum.config.MyConfig3;
+import com.sondahum.servlet1.config.MyConfig1;
+import com.sondahum.servlet2.config.MyConfig2;
+import com.sondahum.servlet3.config.MyConfig3;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 

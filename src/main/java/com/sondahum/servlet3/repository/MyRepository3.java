@@ -1,4 +1,4 @@
-package com.sondahum.repository;
+package com.sondahum.servlet3.repository;
 
 
 import org.springframework.stereotype.Repository;

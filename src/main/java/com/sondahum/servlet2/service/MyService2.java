@@ -1,8 +1,8 @@
-package com.sondahum.service;
+package com.sondahum.servlet2.service;
 
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class MyService3 {
+public class MyService2 {
 }

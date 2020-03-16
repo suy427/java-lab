@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- use-default-filter는 default가 true인데 @Component 어노테이션을 자동으로 등록하는애다. -->
+    <!-- 근데 이걸 false로 하고 @Controller만 지정해서 등록하게 함으로 applicationContext.xml과 중복을 피하고있다. -->
+    <context:component-scan base-package="com.myapp.app" use-default-filters="false">
+        <!-- Component-scan대상은 @Controller annotation Class만 scan한다. -->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+</beans>

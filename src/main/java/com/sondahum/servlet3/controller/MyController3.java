@@ -1,8 +1,8 @@
-package com.sondahum.controller;
+package com.sondahum.servlet3.controller;
 
 
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class MyController2 {
+public class MyController3 {
 }
