@@ -57,9 +57,6 @@ public class MyServlet extends HttpServlet {
             }
         }
 
-        Vector vector = new Vector(10);
-
-
     }
 
     @Override
