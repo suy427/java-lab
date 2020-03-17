@@ -1,4 +1,4 @@
-package com.sondahum.servlet3.controller;
+package com.sondahum.servlet.servlet3.controller;
 
 
 import org.springframework.stereotype.Controller;
