@@ -2,6 +2,8 @@ package com.sondahum.servlet.servlet1.config;
 
 
 import com.sondahum.servlet.servlet1.controller.MyController1;
+import com.sondahum.servlet.servlet1.repository.MyRepository1;
+import com.sondahum.servlet.servlet1.service.MyService1;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
@@ -16,13 +18,18 @@ public class MyConfig1 implements WebMvcConfigurer {
     }
 
     @Bean
-    public MyService1 myService1() {
-        return new MyService1(new MyRepository1() {
+    public MyRepository1 myRepository1() {
+        return new MyRepository1() {
             @Override
             public int hashCode() {
                 return super.hashCode();
             }
-        });
+        };
+    }
+
+    @Bean
+    public MyService1 myService1(MyRepository1 repo1) {
+        return new MyService1(repo1);
     }
 
     @Override
