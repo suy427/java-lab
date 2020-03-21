@@ -1,10 +1,9 @@
-import com.sondahum.servlet1.config.MyConfig1;
-import com.sondahum.servlet1.service.MyService1;
-import com.sondahum.servlet2.config.MyConfig2;
-import com.sondahum.servlet3.config.MyConfig3;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
+import com.sondahum.servlet.servlet1.config.MyConfig1;
+import com.sondahum.servlet.servlet2.config.MyConfig2;
+import com.sondahum.servlet.servlet3.config.MyConfig3;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import java.util.Arrays;

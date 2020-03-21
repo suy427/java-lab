@@ -1,4 +1,4 @@
-package com.sondahum.servlet2.service;
+package com.sondahum.servlet.servlet2.service;
 
 
 import org.springframework.stereotype.Service;

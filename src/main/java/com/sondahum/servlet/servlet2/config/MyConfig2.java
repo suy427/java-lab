@@ -1,8 +1,7 @@
-package com.sondahum.servlet2.config;
+package com.sondahum.servlet.servlet2.config;
 
 
-
-import com.sondahum.servlet2.controller.MyController2;
+import com.sondahum.servlet.servlet1.controller.MyController1;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
