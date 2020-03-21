@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/c"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <context:component-scan base-package="com.sondahum.core">
-        <context:exclude-filter type="annotaion" expression="org.springframework.stereotype.Controller"/>
-    </context:component-scan>
+<!-- 여기 beans 뒤에 어쩌구저쩌구는 그냥 스키마임. 이 스키마에 따라서 이 xml파일을 작성하겠다는거임 -->
+<!-- 이 스키마도 뭔지 알아야할듯... 이거 없으니깐 내 클래스 가져올 수 있는데 이거땜에 내꺼 인식안됨...-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+<!--<beans>-->
+<!--    <context:component-scan base-package="com.sondahum.core">-->
+<!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+<!--    </context:component-scan>-->
+
+    <!-- 얘가 있어야 Autowired를 쓸 수 있다. -->
+    <context:annotation-config/>
+
+    <!-- MyConfig1이라는 클래스를 config1이라는 id로 context에서 가지고 있어라..! -->
+    <import resource="classpath:config-context.xml"/>
+    <import resource="classpath:servlet1-context.xml"/>
+    <import resource="classpath:servlet2-context.xml"/>
+    <import resource="classpath:servlet3-context.xml"/>
+
+    <!-- scope를 prototype으로 하면 singleton이 아니라 getBean할때마다 새로운 객체가 생성된다. -->
+    <bean id="proto" class="com.sondahum.core.model.Haha" scope="prototype"/>
+
+
+
+
+
+    <!-- MyService1이라는 클래스를 만드는데, repo1를 주입받는다. -->
+
+
 
 </beans>
 

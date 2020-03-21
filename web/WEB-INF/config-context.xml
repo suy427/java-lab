@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <!-- property는 setter method와 mapping이 되는거다. name은 method이름, value는 파라미터 -->
+    <!-- 이러면 MyDBconfig 객체가 컨텍스트에 로드된다. -->
+    <bean id="db_jyson" class="com.sondahum.core.config.MyDBconfig">
+        <property name="jdbc" value="jdbc:mysql:jyson@localhost:3306"/>
+        <property name="userId" value="jyson"/>
+        <property name="userPw" value="jyson"/>
+    </bean>
+
+    <!-- 똑같은 클래스로 여러 객체를 만들 수 있다. getBean할때 id를 지정해서 사용 가능함. -->
+    <bean id="db_nano" class="com.sondahum.core.config.MyDBconfig">
+        <property name="jdbc" value="jdbc:mysql:jyson@localhost:3306"/>
+        <property name="userId" value="nano"/>
+        <property name="userPw" value="nano"/>
+    </bean>
+
+
+</beans>

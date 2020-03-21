@@ -11,4 +11,13 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+    <bean id="config1" class="com.sondahum.servlet1.config.MyConfig1"/>
+    <bean id="repo1" class="com.sondahum.servlet1.repository.MyRepository1"/>
+
+    <bean id="service1" class="com.sondahum.servlet1.service.MyService1">
+        <constructor-arg ref="repo1"/>
+    </bean>
+
+
+
 </beans>
