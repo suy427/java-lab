@@ -1,9 +1,8 @@
 package com.sondahum.servlet;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import org.springframework.web.servlet.DispatcherServlet;
+
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -47,15 +46,16 @@ public class MyServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        Enumeration<String> e = req.getHeaderNames();
-
-        while (e.hasMoreElements()) {
-            String headerName = e.nextElement();
-            String[] values = req.getParameterValues(headerName);
-            for (String value : values) {
-                System.out.println("name : " + headerName + ", value : " + value);
-            }
-        }
+        resp.getWriter().println("i know~~~ i know~~");
+//        Enumeration<String> e = req.getHeaderNames();
+//
+//        while (e.hasMoreElements()) {
+//            String headerName = e.nextElement();
+//            String[] values = req.getParameterValues(headerName);
+//            for (String value : values) {
+//                System.out.println("name : " + headerName + ", value : " + value);
+//            }
+//        }
 
     }
 

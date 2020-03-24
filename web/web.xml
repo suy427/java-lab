@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+<!--    web-app 태그 안에 이 내용이 default로 들어있었는데, 이게 있으니까 springframework 패키지를 못잡았다... 원인은 정확히 모르겠다...   -->
+<!--    version="4.0"-->
+
+
+    <!-- todo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+    <!-- todo @@ ContextLoaderListener로 Spring Container 생성 후 로드 @@ -->
+    <!-- todo @@@@@@@@@@@@@@@ 이게 application-context @@@@@@@@@@@@@@@@@@ -->
+    <!-- todo @@@@@@@@@@@@@@@@@@@@ OR root-context @@@@@@@@@@@@@@@@@@@@@@ -->
+    <!-- todo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>com.sondahum.servlet.config.MyAppConfig</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </context-param>
+
+
+
+
+    <!-- todo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+    <!-- todo @@@@@ DispatcherServlet 만들면서 servlet-context 생성 @@@@@ -->
+    <!-- todo @@@@@@@@@@@@@@@@ root-context를 상속받음 @@@@@@@@@@@@@@@@@@ -->
+    <!-- todo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>com.sondahum.servlet.config.MyWebConfig</param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>
