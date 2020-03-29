@@ -5,6 +5,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import com.sondahum.servlet.servlet1.config.MyConfig1;
 import com.sondahum.servlet.servlet2.config.MyConfig2;
 import com.sondahum.servlet.servlet3.config.MyConfig3;
+import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import java.util.Arrays;
@@ -12,7 +13,6 @@ import java.util.List;
 
 
 public class Main extends AbstractAnnotationConfigDispatcherServletInitializer {
-
     public static void main(String[] args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext("classpath:applicationContext.xml");
 
@@ -40,7 +40,7 @@ public class Main extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[] {MyConfig1.class, MyConfig2.class, MyConfig3.class};
+        return new Class[0];
     }
 
     @Override

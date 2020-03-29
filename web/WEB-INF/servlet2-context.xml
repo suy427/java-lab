@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans>
 
     <bean id="config2" class="com.sondahum.servlet2.config.MyConfig2"/>
     <bean id="repo2" class="com.sondahum.servlet3.repository.MyRepository2"/>
@@ -10,7 +8,7 @@
 
     <!-- todo 중요!!! 이렇게 생성자에 ref객체를 명시해서 넣어주지 않고 @Autowired를 하면 'type'만 보고 알아서 주입한다. -->
     <!-- todo 그러면 같은 type의 Bean이 여러개일때는 에러가 나는거다... 그러니깐 Autowired는 쓰지 말라는거다!!!!!!!!!! -->
-    <bean id="service2" class="com.sondahum.servlet2.service.MyService2">
+    <bean id="service2" class="com.sondahum.servlet.servlet2.service.MyService2">
         <constructor-arg ref="repo2"/>
         <property name="repository" ref="repo2"/><!-- 이런식으로 setter로 primitive type이 아니라 객체를 받을때는 value가 아니라 ref를 쓴다. -->
     </bean>

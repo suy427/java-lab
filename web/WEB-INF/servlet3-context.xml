@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans>
 
 
-    <bean id="config3" class="com.sondahum.servlet3.config.MyConfig3"/>
-    <bean id="repo3" class="com.sondahum.servlet3.repository.MyRepository3"/>
+    <bean id="config3" class="com.sondahum.servlet.servlet3.config.MyConfig3"/>
+    <bean id="repo3" class="com.sondahum.servlet.servlet3.repository.MyRepository3"/>
 
-    <bean id="service3" class="com.sondahum.servlet3.service.MyService3">
+    <bean id="service3" class="com.sondahum.servlet.servlet3.service.MyService3">
         <constructor-arg ref="repo3"/>
     </bean>
 
