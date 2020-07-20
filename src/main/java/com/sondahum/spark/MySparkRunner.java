@@ -7,13 +7,12 @@ public class MySparkRunner {
     private SparkConf sparkConf;
 
     public static void main(String[] args) {
-        setSparkConf();
+
     }
 
     public void setSparkConf() {
         sparkConf = new SparkConf()
                 .setAppName("my_spark_1")
-                .setMaster("local[1]")
-                .
+                .setMaster("local[1]");
     }
 }
