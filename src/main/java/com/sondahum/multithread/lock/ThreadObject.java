@@ -4,6 +4,9 @@ public class ThreadObject {
     private boolean isNotified = false;
 
     public synchronized void doWait() throws InterruptedException {
+        // note 이 while은 결국 wait에서 깨어나도 isNotified에 의해 다시 wait로 빠질 수 있단거다.
+        // note 이 whild은 sprious wake를 방지하는건데, sprious wake는 notify 등의 아무 원인 없이
+        // note 갑자기 혼자 깨어나게 되는 현상인데.. 원인은 모르겠지만 발생 할 수 있는 현상이란다...
         while(!isNotified) {
             this.wait();
         }
@@ -12,6 +15,8 @@ public class ThreadObject {
 
     public synchronized void doNotify() {
         this.isNotified = true;
+        // note notify는 호출되는 객체의 wait 호출로 인해 대기중인 thread중 'RANDOM'으로 하나를 깨운다..
+        // note ---> 정말 'RANDOM'인가..?
         this.notify();
     }
 
@@ -19,8 +24,3 @@ public class ThreadObject {
         return this == o;
     }
 }
-// note 블락 조건..!
-// isLockedForThisThread는 결국 이 thread가 access 가능하냐?를 묻는거다.
-// 따라서 이유불문하고 isLocked가 true면 걍 잠긴거다.
-// 근데, 현재 lock이 안걸려있더라도 현재 thread 보다 먼저 대기중인 thread가 있으면
-// 먼저 대기중인 thread가 먼저 처리될 수 있도록 기다려 준다. (fair)
