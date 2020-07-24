@@ -1,4 +1,4 @@
-package com.sondahum.multi;
+package com.sondahum.multithread.javaconcurrent;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;

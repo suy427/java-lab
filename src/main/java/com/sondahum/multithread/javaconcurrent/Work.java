@@ -1,4 +1,4 @@
-package com.sondahum.multi;
+package com.sondahum.multithread.javaconcurrent;
 
 import org.apache.spark.sql.Dataset;
 
