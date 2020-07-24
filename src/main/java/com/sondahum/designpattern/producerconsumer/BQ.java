@@ -13,9 +13,14 @@ public class BQ {
         this.count = 0;
     }
 
-    public synchronized void put(String packet) throws InterruptedException {
+    public synchronized void put(String packet) {
         while(count >= buffer.length) {
-            wait();
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                System.out.println(Thread.currentThread().getName());
+                e.printStackTrace();
+            }
         }
 
         buffer[tail] = packet;
@@ -25,15 +30,20 @@ public class BQ {
         notifyAll();
     }
 
-    public String take() throws InterruptedException {
-        while (count <= 0) {
-            wait();
+    public synchronized String take() {
+        while (count <= 0) { // producer가 sleep상태일때는 sleep으로 들어간다.
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                System.out.println(Thread.currentThread().getName());
+                e.printStackTrace();
+            }
         }
 
         String packet = buffer[head];
         head = (head+1) % buffer.length;
         count--;
-        notifyAll();
+        notifyAll(); // 누가 다음으로 BQ.take()를 호출할지 보장할 수 없다.
 
         return packet;
     }

@@ -1,20 +1,22 @@
 package com.sondahum.designpattern.producerconsumer;
 
-import lombok.SneakyThrows;
 
 public class Consumer extends Thread {
-    BQ bq;
+    private final BQ bq;
+    private final String name;
 
-    public Consumer(BQ bq) {
+    public Consumer(BQ bq, String name) {
+        this.setName(name);
         this.bq = bq;
+        this.name = name;
     }
 
-    @SneakyThrows // todo 이거 뭔지 알아볼것
     @Override
     public void run() {
         while(true) {
+            // 맨 처음 consumer가 실행됐을땐 producer가 sleep상태다.
             String packet = bq.take();
-            System.out.println("consumer : " + packet);
+            System.out.println(name + " : " + packet);
         }
     }
 }
