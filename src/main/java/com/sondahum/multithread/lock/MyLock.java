@@ -73,13 +73,20 @@ class FairLock {
     private List<ThreadObject> waitingThreads = new ArrayList<>();
 
     public void lock() throws InterruptedException {
+        // note 이 threadObject는 실제 이 lock을 사용하는 thread를 객체로 표현한 것이다.
+        // note 따라서 wait와 notify 메서드로도 명확하게 특정 thread를 control할 수 있는 것이다.
+        // note --> 이 threadObject는 각각의 thread 자신만 쓰기 때문.
         ThreadObject currentEnteredThread = new ThreadObject();
         boolean isLockedForThisThread = true;
 
         synchronized (this) {
             waitingThreads.add(currentEnteredThread);
         }
-
+        // note 블락 조건..!
+        // isLockedForThisThread는 결국 이 thread가 access 가능하냐?를 묻는거다.
+        // 따라서 이유불문하고 isLocked가 true면 걍 잠긴거다.
+        // 근데, 현재 lock이 안걸려있더라도 현재 thread 보다 먼저 대기중인 thread가 있으면
+        // 먼저 대기중인 thread가 먼저 처리될 수 있도록 기다려 준다. (fair)
         while (isLockedForThisThread) {
             synchronized (this) {
                 isLockedForThisThread =
@@ -95,19 +102,25 @@ class FairLock {
             try { // 여기가 spin loop다.
                 currentEnteredThread.doWait(); // doWait가 안된다는 말은 --> 권한 없는 애가 얘를 건드렸다..?
             } catch (InterruptedException e) {
-                synchronized (this) { waitingThreads.remove(currentEnteredThread); }
+                synchronized (this) {
+                    waitingThreads.remove(currentEnteredThread);
+                }
                 throw e;
             }
         }
     }
 
     public synchronized void unlock() {
+        // 이 안으로 접근하는게 어떻게 가능할까..?
+        // A(lock, go Critical Section) -> B(lock, wait) -> C(lock, wait) 이런 상황에서는 A가 lock을 풀어줘야한다.
+        // 근데 만
         if (this.lockingThread != Thread.currentThread()) {
             throw new IllegalMonitorStateException("The calling thread doesn't have this lock.");
         }
         isLocked = false;
         lockingThread = null;
         if (waitingThreads.size() > 0) {
+            // note 먼저 들어온애를 notify 해준다... 이제 fair를 어떻게 구현하는지 이해!!
             waitingThreads.get(0).doNotify();
         }
     }

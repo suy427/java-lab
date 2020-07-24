@@ -1,22 +1,24 @@
 package com.sondahum.designpattern.producerconsumer;
 
-import lombok.SneakyThrows;
-
 public class Producer extends Thread {
-    BQ bq;
-    private static int id;
+    MyBlockingQueue blockingQueue;
+    private static int id=0;
 
-    Producer(BQ bq) {
-        this.bq = bq;
+    Producer(MyBlockingQueue blockingQueue) {
+        this.setName("ProducerThread");
+        this.blockingQueue = blockingQueue;
     }
 
-    @SneakyThrows
     @Override
     public void run() {
         while(true) {
-            Thread.sleep(1000);
-            String packet = "No : " + nextId();
-            bq.put(packet);
+            try {
+                Thread.sleep(1000); // 첫 시작때, 이 1초동안 consumer가 실행된다.
+                String packet = "No : " + nextId();
+                blockingQueue.put(packet);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
