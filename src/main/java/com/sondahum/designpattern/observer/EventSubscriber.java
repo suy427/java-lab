@@ -11,7 +11,7 @@ public class EventSubscriber implements Observer {
 
     @Override
     public void update(String title, String content) {
-        this.newsString = "**Annual User**\n" + "TITLE : " + title + "\n=============\n" + content;
+        this.newsString = "**Event User**\n" + "TITLE : " + title + "\n=============\n" + content+"\n\n";
         display();
     }
 
